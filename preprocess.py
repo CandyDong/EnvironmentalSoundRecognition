@@ -34,7 +34,6 @@ from PIL import Image
 import plotly.graph_objs as go
 from plotly import tools
 from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
-init_notebook_mode(connected=True)
 import plotly_express as px
 import plotly.io as pio
 
@@ -78,18 +77,29 @@ def input_to_target(opts):
 		# print("train_file={:s}, class_id={:d}".format(train_file, class_id))
 		train_labels.append(int(class_id))
 		class_names.append(CLASS_ID[int(class_id)])
-
 	# csv storing information for training dataset
-	train_file_df = pd.DataFrame({'train_file_paths': train_files, 
-								'train_labels': train_labels,
+	train_file_df = pd.DataFrame({'file_paths': train_files, 
+								'labels': train_labels,
 								'class_names': class_names})
-	return train_file_df
+
+	test_labels, class_names = [], []
+	for test_file in test_files:
+		_, class_id, _, _ = _get_meta_info(test_file.split('/')[-1].strip('.wav'))
+		test_labels.append(int(class_id))
+		class_names.append(CLASS_ID[int(class_id)])
+	# csv storing information for training dataset
+	test_file_df = pd.DataFrame({'file_paths': test_files, 
+								'labels': test_labels,
+								'class_names': class_names})
+
+	
+	return train_file_df, test_file_df
 
 def _audio_normalization(data):
-    max_data = np.max(data)
-    min_data = np.min(data)
-    data = (data-min_data)/(max_data-min_data+0.0001)
-    return data-0.5
+	max_data = np.max(data)
+	min_data = np.min(data)
+	data = (data-min_data)/(max_data-min_data+0.0001)
+	return data-0.5
 
 def load_audio_file(file_path, input_length=64000):
 	data, sr = librosa.core.load(file_path, sr=16000) 
@@ -108,13 +118,19 @@ def load_audio_file(file_path, input_length=64000):
 		data = _audio_normalization(data)
 	return data
 
+def load_audio_spectrogram(file_path, opts):
+	wave, sr = librosa.load(file_path, sr=opts.sr)
+	S = librosa.core.stft(y=wave)
+	S_db = librosa.power_to_db(np.abs(S)**2,ref=np.max)
+	return S_db
+
 def plot_mel_spectrogram(df, opts):
 	class_set = set()
 	output_dir = opts.plot_path + 'mel_spectrogram/'
 	if not os.path.exists(output_dir):
 		os.makedirs(output_dir)
 
-	for file_path, class_name, class_id in zip(df['train_file_paths'], df['class_names'], df['train_labels']):
+	for file_path, class_name, class_id in zip(df['file_paths'], df['class_names'], df['labels']):
 		if len(class_set) == 10:
 			break
 		if class_id in class_set:
@@ -122,7 +138,7 @@ def plot_mel_spectrogram(df, opts):
 		class_set.add(class_id)
 
 		wave, sr = librosa.load(file_path, sr=opts.sr)
-		mel_spec = librosa.feature.melspectrogram(y = wave, sr=opts.sr, n_mels=320, fmax=16000)
+		mel_spec = librosa.feature.melspectrogram(y=wave, sr=opts.sr, n_mels=320, fmax=16000)
 		
 		plt.rcParams.update({'font.size': 13})
 		plt.figure(figsize=(15, 6))
@@ -142,7 +158,7 @@ def plot_time_amplitude(df, opts):
 
 	file_paths = []
 	class_names = []
-	for file_path, class_name, class_id in zip(df['train_file_paths'], df['class_names'], df['train_labels']):
+	for file_path, class_name, class_id in zip(df['file_paths'], df['class_names'], df['labels']):
 		if len(class_set) == 10:
 			break
 		if class_id in class_set:
