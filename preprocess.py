@@ -55,7 +55,7 @@ CLASS_ID = {0: "air_conditioner",
 			8:"siren",
 			9:"street_music"}
 
-def get_meta_info(filename):
+def _get_meta_info(filename):
 	infos = filename.split('-')
 	return [int(info) for info in infos]
 
@@ -74,29 +74,98 @@ def input_to_target(opts):
 
 	train_labels, class_names = [], []
 	for train_file in train_files:
-		_, class_id, _, _ = get_meta_info(train_file.split('/')[-1].strip('.wav'))
+		_, class_id, _, _ = _get_meta_info(train_file.split('/')[-1].strip('.wav'))
 		# print("train_file={:s}, class_id={:d}".format(train_file, class_id))
 		train_labels.append(int(class_id))
 		class_names.append(CLASS_ID[int(class_id)])
 
 	# csv storing information for training dataset
-	train_files = pd.DataFrame({'train_file_paths': train_files, 
+	train_file_df = pd.DataFrame({'train_file_paths': train_files, 
 								'train_labels': train_labels,
 								'class_names': class_names})
-	print(train_files.head())
-	return train_files
+	return train_file_df
 
-	
+def _audio_normalization(data):
+    max_data = np.max(data)
+    min_data = np.min(data)
+    data = (data-min_data)/(max_data-min_data+0.0001)
+    return data-0.5
 
-  
+def load_audio_file(file_path, input_length=64000):
+	data, sr = librosa.core.load(file_path, sr=16000) 
+	# randomly crop desired length of data from the original audio file 
+	if len(data) > input_length:
+		max_offset = len(data)-input_length
+		offset = np.random.randint(max_offset)
+		data = data[offset:(input_length+offset)]    
+	else:
+		if input_length > len(data):
+			max_offset = input_length - len(data)
+			offset = np.random.randint(max_offset)
+		else:
+			offset = 0
+		data = np.pad(data, (offset, input_length - len(data) - offset), "constant")
+		data = _audio_normalization(data)
+	return data
 
+def plot_mel_spectrogram(df, opts):
+	class_set = set()
+	output_dir = opts.plot_path + 'mel_spectrogram/'
+	if not os.path.exists(output_dir):
+		os.makedirs(output_dir)
 
-	# train_files = pd.DataFrame({'train_file_paths': train_files})
-	# train_files['ID'] = train_files['train_file_paths'].apply(lambda x:x.split('/')[-1].split('.')[0])
-	# train_files['ID'] = train_files['ID'].astype(int)
-	# train_files = train_files.sort_values(by='ID')
-	# test_files = glob.glob(test_path)
+	for file_path, class_name, class_id in zip(df['train_file_paths'], df['class_names'], df['train_labels']):
+		if len(class_set) == 10:
+			break
+		if class_id in class_set:
+			continue
+		class_set.add(class_id)
 
+		wave, sr = librosa.load(file_path, sr=opts.sr)
+		mel_spec = librosa.feature.melspectrogram(y = wave, sr=opts.sr, n_mels=320, fmax=16000)
+		
+		plt.rcParams.update({'font.size': 13})
+		plt.figure(figsize=(15, 6))
+		librosa.display.specshow(librosa.power_to_db(mel_spec,ref=np.max), y_axis = 'mel', x_axis= 'time')
+		plt.colorbar(format='%+2.0f dB')
+		plt.title('{:s}({:s})'.format(file_path, class_name))
+		plt.savefig(output_dir+ class_name + '.png', dpi =300)
+		plt.show()
+
+def plot_time_amplitude(df, opts):
+	class_names = df['class_names'].tolist()
+	li = []
+	class_set = set()
+	output_dir = opts.plot_path + 'time_amplitude/'
+	if not os.path.exists(output_dir):
+		os.makedirs(output_dir)
+
+	file_paths = []
+	class_names = []
+	for file_path, class_name, class_id in zip(df['train_file_paths'], df['class_names'], df['train_labels']):
+		if len(class_set) == 10:
+			break
+		if class_id in class_set:
+			continue
+		class_set.add(class_id)
+		file_paths.append(file_path)
+		class_names.append(class_name)
+
+		wave = load_audio_file(file_path, input_length=opts.sr*opts.audio_duration)
+		data = pd.DataFrame({'amplitude': wave})
+		data['time(ms)'] =  (np.arange(0,opts.sr*opts.audio_duration)*1/opts.sr)/(1e-3)
+		data['class'] = [class_name]*data.shape[0]
+		li.append(data)
+
+	data = pd.concat(li)
+	for ind, (data, file_path, class_name) in enumerate(zip(li, file_paths, class_names)): 
+		fig = px.line(data, x='time(ms)', y='amplitude', color='class', 
+						  template='ggplot2', title = "{:s}({:s})".format(file_path, class_name),
+						 color_discrete_sequence=[px.colors.qualitative.D3[ind]], height = 400)
+		
+		fig['layout']['font']['size'] = 15
+		pio.write_image(fig, output_dir+ class_name + '.svg', width = 980, height = 500)
+		iplot(fig)
 
 
 
