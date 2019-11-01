@@ -60,7 +60,8 @@ def _get_meta_info(filename):
 
 def input_to_target(opts):
 	# audio files and their corresponding labels
-	train_paths = [opts.data_path + "fold1/*.wav", opts.data_path + "fold2/*.wav"]
+	# train_paths = [opts.data_path + "fold1/*.wav", opts.data_path + "fold2/*.wav"]
+	train_paths = [opts.data_path + "fold1/*.wav"]
 	train_label_path = opts.data_path +  "train_labels.csv"
 	test_paths =  [opts.data_path + "fold2/*.wav"]
 
@@ -123,6 +124,25 @@ def load_audio_spectrogram(file_path, opts):
 	S = librosa.core.stft(y=wave)
 	S_db = librosa.power_to_db(np.abs(S)**2,ref=np.max)
 	return S_db
+
+def load_audio_feature(file_path, opts):
+	y, sr = librosa.load(file_path, sr=opts.sr)
+	if y.ndim > 1:
+		y = y[:, 0]
+	y = y.T
+
+	# Get features
+	stft = np.abs(librosa.stft(y))
+	mfccs = np.mean(librosa.feature.mfcc(y=y, sr=opts.sr, n_mfcc=40).T, axis=0)  # 40 values
+	# zcr = np.mean(librosa.feature.zero_crossing_rate)
+	chroma = np.mean(librosa.feature.chroma_stft(S=stft, sr=opts.sr).T, axis=0)
+	mel = np.mean(librosa.feature.melspectrogram(y, sr=opts.sr).T, axis=0)
+	contrast = np.mean(librosa.feature.spectral_contrast(S=stft, sr=opts.sr).T, axis=0)
+	# tonnetz = np.mean(librosa.feature.tonnetz(y=librosa.effects.harmonic(y), sr=opts.sr).T, # tonal centroid features
+	# 				  axis=0)
+
+	# Return computed features
+	return mfccs, chroma, mel, contrast
 
 def plot_mel_spectrogram(df, opts):
 	class_set = set()

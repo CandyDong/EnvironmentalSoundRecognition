@@ -9,27 +9,23 @@ from sklearn.metrics import classification_report, confusion_matrix
 
 
 class SVMModel():
-	def __init__(self, X_train, y_train, X_test, y_test, opts):
-		self.train_df = train_df
-		self.svc = SVC()
-		self.X_train = X_train
-		self.y_train = y_train
-		self.X_test = X_test
-		self.y_test = y_test
+	def __init__(self, opts):
+		self.svc = SVC(C=28.0, gamma = 0.00001, decision_function_shape="ovr")
 
-	def run(self):
-		svc = SVC()
-		svc.fit(self.X_train, self.y_train)
+	def run(self, X_train, y_train):
+		self.svc.fit(X_train, y_train)
 
 	# predict results with the trained SVC classifier
 	def predict(self, X_test):
-		return svc.predict(X_test)
+		return self.svc.predict(X_test)
 
 	def evaluate(self, X_test, y_test):
-		y_pred = self.predict(self.svc, X_test)
-		confusion_matrix = confusion_matrix(y_test,y_pred)
-		classification_report = classification_report(y_test,y_pred)
-		return confusion_matrix, classification_report
+		y_pred = self.predict(X_test)
+		print("y_pred:"+str(y_pred))
+		confusion = confusion_matrix(y_test,y_pred)
+		classi = classification_report(y_test,y_pred)
+		acc = self.svc.score(X_test, y_test)
+		return confusion, classi, acc
 
 
 	
