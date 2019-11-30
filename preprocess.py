@@ -12,7 +12,6 @@ import librosa.display
 import glob
 import os
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 from numpy import random
 from tqdm import tqdm
