@@ -23,4 +23,5 @@ output_labels = ["air_conditioner",
 				 "street_music"]
 
 scale = 1/255.
+
 coreml_model = coremltools.converters.keras.convert('./output/cnn.h5')
