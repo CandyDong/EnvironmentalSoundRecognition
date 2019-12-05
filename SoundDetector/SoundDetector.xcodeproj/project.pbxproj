@@ -8,26 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		DDBE2B4C23964415005EF703 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBE2B4B23964415005EF703 /* AppDelegate.swift */; };
-		DDBE2B4E23964415005EF703 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBE2B4D23964415005EF703 /* SceneDelegate.swift */; };
-		DDBE2B5023964415005EF703 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBE2B4F23964415005EF703 /* ContentView.swift */; };
 		DDBE2B5223964421005EF703 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDBE2B5123964421005EF703 /* Assets.xcassets */; };
 		DDBE2B5523964421005EF703 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDBE2B5423964421005EF703 /* Preview Assets.xcassets */; };
 		DDBE2B5823964421005EF703 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDBE2B5623964421005EF703 /* LaunchScreen.storyboard */; };
-		DDBE2B6423964843005EF703 /* libAudioPreprocessing.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DDBE2B6323964832005EF703 /* libAudioPreprocessing.dylib */; };
-		DDBE2B6523964DFD005EF703 /* libAudioPreprocessing.dylib in Resources */ = {isa = PBXBuildFile; fileRef = DDBE2B6323964832005EF703 /* libAudioPreprocessing.dylib */; };
-		DDBE2B6623964E1A005EF703 /* libAudioPreprocessing.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = DDBE2B6323964832005EF703 /* libAudioPreprocessing.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		DDBE2B69239652F2005EF703 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBE2B68239652F2005EF703 /* ViewController.swift */; };
-		DDBE2B6D2396C9AD005EF703 /* ios.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = DDBE2B6C2396C9AD005EF703 /* ios.mlmodel */; };
+		DDBE2BAD2398E276005EF703 /* libAudioPreprocessing.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DDBE2BAB2398E25B005EF703 /* libAudioPreprocessing.dylib */; };
+		DDBE2BAE2398E27C005EF703 /* libAudioPreprocessing.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = DDBE2BAB2398E25B005EF703 /* libAudioPreprocessing.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		DDBE2BB12398E63A005EF703 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBE2BAF2398E63A005EF703 /* ContentView.swift */; };
+		DDBE2BB22398E63A005EF703 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBE2BB02398E63A005EF703 /* SceneDelegate.swift */; };
+		DDBE2BB42398F574005EF703 /* RF.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = DDBE2BB32398F574005EF703 /* RF.mlmodel */; };
+		DDBE2BC92398F711005EF703 /* siren.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDBE2BB62398F710005EF703 /* siren.wav */; };
+		DDBE2BCA2398F711005EF703 /* jack.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDBE2BB82398F710005EF703 /* jack.wav */; };
+		DDBE2BCB2398F711005EF703 /* dog_bark.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDBE2BBA2398F710005EF703 /* dog_bark.wav */; };
+		DDBE2BCC2398F711005EF703 /* car_horn.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDBE2BBC2398F710005EF703 /* car_horn.wav */; };
+		DDBE2BCD2398F711005EF703 /* air_cond.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDBE2BBE2398F710005EF703 /* air_cond.wav */; };
+		DDBE2BCE2398F711005EF703 /* street_music.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDBE2BC02398F710005EF703 /* street_music.wav */; };
+		DDBE2BCF2398F711005EF703 /* child_play.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDBE2BC22398F710005EF703 /* child_play.wav */; };
+		DDBE2BD02398F711005EF703 /* drill.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDBE2BC42398F710005EF703 /* drill.wav */; };
+		DDBE2BD12398F711005EF703 /* eng_idle.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDBE2BC62398F710005EF703 /* eng_idle.wav */; };
+		DDBE2BD22398F711005EF703 /* gun_shot.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDBE2BC82398F711005EF703 /* gun_shot.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		DDBE2B6723964E1A005EF703 /* Embed Libraries */ = {
+		DDBE2BA92398E1AA005EF703 /* Embed Libraries */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				DDBE2B6623964E1A005EF703 /* libAudioPreprocessing.dylib in Embed Libraries */,
+				DDBE2BAE2398E27C005EF703 /* libAudioPreprocessing.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -37,15 +46,25 @@
 /* Begin PBXFileReference section */
 		DDBE2B4823964415005EF703 /* SoundDetector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundDetector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDBE2B4B23964415005EF703 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DDBE2B4D23964415005EF703 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DDBE2B4F23964415005EF703 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DDBE2B5123964421005EF703 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DDBE2B5423964421005EF703 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DDBE2B5723964421005EF703 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDBE2B5923964421005EF703 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DDBE2B6323964832005EF703 /* libAudioPreprocessing.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libAudioPreprocessing.dylib; path = ../../libAudioPreprocessing/arm64/libAudioPreprocessing.dylib; sourceTree = "<group>"; };
 		DDBE2B68239652F2005EF703 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DDBE2B6C2396C9AD005EF703 /* ios.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = ios.mlmodel; path = ../../output/ios.mlmodel; sourceTree = "<group>"; };
+		DDBE2BAB2398E25B005EF703 /* libAudioPreprocessing.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libAudioPreprocessing.dylib; sourceTree = "<group>"; };
+		DDBE2BAF2398E63A005EF703 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DDBE2BB02398E63A005EF703 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		DDBE2BB32398F574005EF703 /* RF.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = RF.mlmodel; path = ../../output/RF.mlmodel; sourceTree = "<group>"; };
+		DDBE2BB62398F710005EF703 /* siren.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = siren.wav; sourceTree = "<group>"; };
+		DDBE2BB82398F710005EF703 /* jack.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jack.wav; sourceTree = "<group>"; };
+		DDBE2BBA2398F710005EF703 /* dog_bark.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dog_bark.wav; sourceTree = "<group>"; };
+		DDBE2BBC2398F710005EF703 /* car_horn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = car_horn.wav; sourceTree = "<group>"; };
+		DDBE2BBE2398F710005EF703 /* air_cond.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = air_cond.wav; sourceTree = "<group>"; };
+		DDBE2BC02398F710005EF703 /* street_music.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = street_music.wav; sourceTree = "<group>"; };
+		DDBE2BC22398F710005EF703 /* child_play.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = child_play.wav; sourceTree = "<group>"; };
+		DDBE2BC42398F710005EF703 /* drill.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = drill.wav; sourceTree = "<group>"; };
+		DDBE2BC62398F710005EF703 /* eng_idle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = eng_idle.wav; sourceTree = "<group>"; };
+		DDBE2BC82398F711005EF703 /* gun_shot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gun_shot.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDBE2B6423964843005EF703 /* libAudioPreprocessing.dylib in Frameworks */,
+				DDBE2BAD2398E276005EF703 /* libAudioPreprocessing.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +84,7 @@
 			children = (
 				DDBE2B4A23964415005EF703 /* SoundDetector */,
 				DDBE2B4923964415005EF703 /* Products */,
+				DDBE2BA62398E1AA005EF703 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,16 +99,26 @@
 		DDBE2B4A23964415005EF703 /* SoundDetector */ = {
 			isa = PBXGroup;
 			children = (
+				DDBE2BBD2398F710005EF703 /* air_cond */,
+				DDBE2BBB2398F710005EF703 /* car_horn */,
+				DDBE2BC12398F710005EF703 /* child_play */,
+				DDBE2BB92398F710005EF703 /* dog_bark */,
+				DDBE2BC32398F710005EF703 /* drill */,
+				DDBE2BC52398F710005EF703 /* eng_idle */,
+				DDBE2BC72398F711005EF703 /* gun_shot */,
+				DDBE2BB72398F710005EF703 /* jack */,
+				DDBE2BB52398F710005EF703 /* siren */,
+				DDBE2BBF2398F710005EF703 /* street_music */,
 				DDBE2B4B23964415005EF703 /* AppDelegate.swift */,
-				DDBE2B4D23964415005EF703 /* SceneDelegate.swift */,
-				DDBE2B6323964832005EF703 /* libAudioPreprocessing.dylib */,
-				DDBE2B6C2396C9AD005EF703 /* ios.mlmodel */,
-				DDBE2B4F23964415005EF703 /* ContentView.swift */,
+				DDBE2B68239652F2005EF703 /* ViewController.swift */,
+				DDBE2BAF2398E63A005EF703 /* ContentView.swift */,
+				DDBE2BB02398E63A005EF703 /* SceneDelegate.swift */,
+				DDBE2BB32398F574005EF703 /* RF.mlmodel */,
+				DDBE2BAB2398E25B005EF703 /* libAudioPreprocessing.dylib */,
 				DDBE2B5123964421005EF703 /* Assets.xcassets */,
 				DDBE2B5623964421005EF703 /* LaunchScreen.storyboard */,
 				DDBE2B5923964421005EF703 /* Info.plist */,
 				DDBE2B5323964421005EF703 /* Preview Content */,
-				DDBE2B68239652F2005EF703 /* ViewController.swift */,
 			);
 			path = SoundDetector;
 			sourceTree = "<group>";
@@ -101,6 +131,93 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		DDBE2BA62398E1AA005EF703 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DDBE2BB52398F710005EF703 /* siren */ = {
+			isa = PBXGroup;
+			children = (
+				DDBE2BB62398F710005EF703 /* siren.wav */,
+			);
+			path = siren;
+			sourceTree = "<group>";
+		};
+		DDBE2BB72398F710005EF703 /* jack */ = {
+			isa = PBXGroup;
+			children = (
+				DDBE2BB82398F710005EF703 /* jack.wav */,
+			);
+			path = jack;
+			sourceTree = "<group>";
+		};
+		DDBE2BB92398F710005EF703 /* dog_bark */ = {
+			isa = PBXGroup;
+			children = (
+				DDBE2BBA2398F710005EF703 /* dog_bark.wav */,
+			);
+			path = dog_bark;
+			sourceTree = "<group>";
+		};
+		DDBE2BBB2398F710005EF703 /* car_horn */ = {
+			isa = PBXGroup;
+			children = (
+				DDBE2BBC2398F710005EF703 /* car_horn.wav */,
+			);
+			path = car_horn;
+			sourceTree = "<group>";
+		};
+		DDBE2BBD2398F710005EF703 /* air_cond */ = {
+			isa = PBXGroup;
+			children = (
+				DDBE2BBE2398F710005EF703 /* air_cond.wav */,
+			);
+			path = air_cond;
+			sourceTree = "<group>";
+		};
+		DDBE2BBF2398F710005EF703 /* street_music */ = {
+			isa = PBXGroup;
+			children = (
+				DDBE2BC02398F710005EF703 /* street_music.wav */,
+			);
+			path = street_music;
+			sourceTree = "<group>";
+		};
+		DDBE2BC12398F710005EF703 /* child_play */ = {
+			isa = PBXGroup;
+			children = (
+				DDBE2BC22398F710005EF703 /* child_play.wav */,
+			);
+			path = child_play;
+			sourceTree = "<group>";
+		};
+		DDBE2BC32398F710005EF703 /* drill */ = {
+			isa = PBXGroup;
+			children = (
+				DDBE2BC42398F710005EF703 /* drill.wav */,
+			);
+			path = drill;
+			sourceTree = "<group>";
+		};
+		DDBE2BC52398F710005EF703 /* eng_idle */ = {
+			isa = PBXGroup;
+			children = (
+				DDBE2BC62398F710005EF703 /* eng_idle.wav */,
+			);
+			path = eng_idle;
+			sourceTree = "<group>";
+		};
+		DDBE2BC72398F711005EF703 /* gun_shot */ = {
+			isa = PBXGroup;
+			children = (
+				DDBE2BC82398F711005EF703 /* gun_shot.wav */,
+			);
+			path = gun_shot;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -111,7 +228,7 @@
 				DDBE2B4423964415005EF703 /* Sources */,
 				DDBE2B4523964415005EF703 /* Frameworks */,
 				DDBE2B4623964415005EF703 /* Resources */,
-				DDBE2B6723964E1A005EF703 /* Embed Libraries */,
+				DDBE2BA92398E1AA005EF703 /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -160,10 +277,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDBE2B6523964DFD005EF703 /* libAudioPreprocessing.dylib in Resources */,
+				DDBE2BCA2398F711005EF703 /* jack.wav in Resources */,
+				DDBE2BCF2398F711005EF703 /* child_play.wav in Resources */,
 				DDBE2B5823964421005EF703 /* LaunchScreen.storyboard in Resources */,
+				DDBE2BD12398F711005EF703 /* eng_idle.wav in Resources */,
 				DDBE2B5523964421005EF703 /* Preview Assets.xcassets in Resources */,
+				DDBE2BCB2398F711005EF703 /* dog_bark.wav in Resources */,
+				DDBE2BCC2398F711005EF703 /* car_horn.wav in Resources */,
+				DDBE2BD02398F711005EF703 /* drill.wav in Resources */,
+				DDBE2BC92398F711005EF703 /* siren.wav in Resources */,
 				DDBE2B5223964421005EF703 /* Assets.xcassets in Resources */,
+				DDBE2BD22398F711005EF703 /* gun_shot.wav in Resources */,
+				DDBE2BCE2398F711005EF703 /* street_music.wav in Resources */,
+				DDBE2BCD2398F711005EF703 /* air_cond.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,11 +300,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDBE2BB22398E63A005EF703 /* SceneDelegate.swift in Sources */,
 				DDBE2B4C23964415005EF703 /* AppDelegate.swift in Sources */,
-				DDBE2B4E23964415005EF703 /* SceneDelegate.swift in Sources */,
 				DDBE2B69239652F2005EF703 /* ViewController.swift in Sources */,
-				DDBE2B6D2396C9AD005EF703 /* ios.mlmodel in Sources */,
-				DDBE2B5023964415005EF703 /* ContentView.swift in Sources */,
+				DDBE2BB12398E63A005EF703 /* ContentView.swift in Sources */,
+				DDBE2BB42398F574005EF703 /* RF.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,16 +443,23 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SoundDetector/Preview Content\"";
 				DEVELOPMENT_TEAM = B9K4Y2455C;
+				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = SoundDetector/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SoundDetector",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Candy.SoundDetector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -335,18 +468,26 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"SoundDetector/Preview Content\"";
 				DEVELOPMENT_TEAM = B9K4Y2455C;
+				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = SoundDetector/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SoundDetector",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Candy.SoundDetector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
