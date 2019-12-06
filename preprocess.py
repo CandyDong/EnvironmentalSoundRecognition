@@ -62,7 +62,7 @@ def input_to_target(opts):
     train_paths = [opts.data_path + "fold1/*.wav", opts.data_path + "fold2/*.wav"]
     # train_paths = [opts.data_path + "fold1/*.wav"]
     train_label_path = opts.data_path +  "train_labels.csv"
-    test_paths =  [opts.data_path + "fold2/*.wav"]
+    test_paths =  [opts.data_path + "fold3/*.wav"]
 
     # input
     train_files, test_files = [], []
